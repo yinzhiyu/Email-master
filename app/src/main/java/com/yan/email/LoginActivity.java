@@ -22,6 +22,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.yan.email.db.DBHelper;
+
 import java.util.List;
 
 /**

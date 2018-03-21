@@ -30,6 +30,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.yan.email.bean.Itemmail;
+import com.yan.email.db.DBHelper;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity
     private int updatetime;
     private SQLiteDatabase sqLiteDatabase;
     private DBHelper dbHelper;
-    private ArrayList<Zhanghao> zhanghaos;
+    private ArrayList<Itemmail.Zhanghao> zhanghaos;
     private ArrayList<String> zhanghaonomima;
     private String user;
     private String pass;
@@ -109,7 +112,7 @@ public class MainActivity extends AppCompatActivity
             while (cursor.moveToNext()) {
                 String zhanghao = cursor.getString(cursor.getColumnIndex("zhanghao"));
                 String mima = cursor.getString(cursor.getColumnIndex("mima"));
-                Zhanghao zhanghao1 = new Zhanghao();
+                Itemmail.Zhanghao zhanghao1 = new Itemmail.Zhanghao();
                 zhanghao1.mima = mima;
                 zhanghao1.zhanghao = zhanghao;
                 zhanghaos.add(zhanghao1);
@@ -421,7 +424,7 @@ public class MainActivity extends AppCompatActivity
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Zhanghao zhanghao = zhanghaos.get(position);
+                    Itemmail.Zhanghao zhanghao = zhanghaos.get(position);
                     flag = false;
                     user = zhanghao.zhanghao;
                     pass = zhanghao.mima;

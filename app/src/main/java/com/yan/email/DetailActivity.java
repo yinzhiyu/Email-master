@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.yan.email.bean.Itemmail;
+
 public class DetailActivity extends AppCompatActivity {
 
     private SocketProcess socketProcess;

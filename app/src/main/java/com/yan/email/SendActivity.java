@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.yan.email.db.DBHelper;
+
 import java.util.ArrayList;
 
 public class SendActivity extends AppCompatActivity {

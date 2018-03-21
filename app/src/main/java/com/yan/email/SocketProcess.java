@@ -2,6 +2,8 @@ package com.yan.email;
 
 import android.util.Base64;
 
+import com.yan.email.bean.Itemmail;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;

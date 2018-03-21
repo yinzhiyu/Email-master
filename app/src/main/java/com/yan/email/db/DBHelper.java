@@ -1,4 +1,4 @@
-package com.yan.email;
+package com.yan.email.db;
 
 import android.content.ContentValues;
 import android.content.Context;
