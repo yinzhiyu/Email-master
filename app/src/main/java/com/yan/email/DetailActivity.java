@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import com.yan.email.bean.Itemmail;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.mail.internet.MimeUtility;
+
 public class DetailActivity extends AppCompatActivity {
 
     private SocketProcess socketProcess;
@@ -62,12 +66,17 @@ public class DetailActivity extends AppCompatActivity {
                         public void run() {
                             DetailActivity.this.setTitle("邮件详情");
                             TextView content= (TextView) findViewById(R.id.mailcontent);
-                            String contentstring="from: \n\t\t\t"+itemmail.from+"\n";
-                            contentstring+="date: \n\t\t\t"+itemmail.time+"\n\n";
-                            contentstring+="subject: \n" +
-                                    "\t\t\t"+itemmail.subject+"\n\n";
-                            contentstring+="content: \n"+itemmail.content+"\n";
-                            content.setText(contentstring);
+                            String contentstring = null;
+                            try {
+                                contentstring = "from: \n\t\t\t" + MimeUtility.decodeText(itemmail.from) + "\n";
+                                contentstring += "date: \n\t\t\t" + MimeUtility.decodeText(itemmail.time) + "\n\n";
+                                contentstring += "subject: \n" +
+                                        "\t\t\t" + MimeUtility.decodeText(itemmail.subject) + "\n\n";
+                                contentstring += "content: \n" + MimeUtility.decodeText(itemmail.content) + "\n";
+                                content.setText(contentstring);
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
                         }
                     });
                 }

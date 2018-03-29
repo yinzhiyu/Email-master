@@ -9,7 +9,10 @@ import android.widget.TextView;
 
 import com.yan.email.bean.Itemmail;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
+import javax.mail.internet.MimeUtility;
 
 /**
  * Created by Yan on 2016/11/13.
@@ -50,9 +53,13 @@ public class MyAdapter extends BaseAdapter{
         }else{
             viewholder= (Viewholder) convertView.getTag();
         }
-        viewholder.from.setText(itemmail.from);
-        viewholder.subject.setText(itemmail.subject);
-        viewholder.time.setText(itemmail.time);
+        try {
+            viewholder.from.setText("发件人："+itemmail.from);
+            viewholder.subject.setText(MimeUtility.decodeText(itemmail.subject));
+            viewholder.time.setText(itemmail.time);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         return convertView;
     }
 
